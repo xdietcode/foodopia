@@ -26,8 +26,8 @@ public class ApplicationConfig {
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         // Hibernate mySql config
         dataSource.setUrl("jdbc:mysql://localhost:3306/onlineOrder?createDatabaseIfNotExist=true&serverTimezone=UTC");
-        dataSource.setUsername("USERNAME");
-        dataSource.setPassword("PASSWORD");
+        dataSource.setUsername("root");
+        dataSource.setPassword("password");
         return dataSource;
     }
 
