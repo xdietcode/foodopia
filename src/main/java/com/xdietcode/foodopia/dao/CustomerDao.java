@@ -22,7 +22,7 @@ public class CustomerDao {
 
         // Set authorities
         Authorities authorities = new Authorities();
-        authorities.setEmaill(customer.getEmail());
+        authorities.setEmail(customer.getEmail());
         authorities.setAuthorities("ROLE_USER");
 
         Session session = null;
