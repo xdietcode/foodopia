@@ -2,8 +2,10 @@ package com.xdietcode.foodopia.dao;
 
 import com.xdietcode.foodopia.entity.Authorities;
 import com.xdietcode.foodopia.entity.Customer;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +15,9 @@ public class CustomerDao {
     @Autowired
     private SessionFactory sessionFactory;
 
+    /**
+     * @param customer
+     */
     public void signUp(Customer customer) {
 
         // Set authorities
@@ -37,9 +42,24 @@ public class CustomerDao {
 
     }
 
+    /**
+     * @param email
+     * @return Customer
+     */
     public Customer getCustomer(String email) {
-        return null;
-    }
+        Customer customer = null;
+        Session session = null;
 
+        try {
+            session = sessionFactory.openSession();
+            Criteria criteria = session.createCriteria(Customer.class);
+            customer = (Customer) criteria.add(Restrictions.eq("email", email)).uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null) session.close();
+        }
+        return customer;
+    }
 
 }
