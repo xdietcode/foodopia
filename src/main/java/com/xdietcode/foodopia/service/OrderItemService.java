@@ -36,6 +36,8 @@ public class OrderItemService {
         String username = authentication.getName();
         Customer customer = customerService.getCustomer(username);
 
+        if (customer == null) return;
+
         orderItem.setMenuItem(menuItem);
         orderItem.setCart(customer.getCart());
         orderItem.setQuantity(1); // TODO: allows front-end to send different quantity
