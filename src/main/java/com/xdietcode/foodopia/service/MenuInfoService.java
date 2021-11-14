@@ -25,7 +25,7 @@ public class MenuInfoService {
      * @param restaurantId
      * @return list of menuItems
      */
-    public List<MenuItem> getAllMenuItem(int restaurantId) {
+    public List<MenuItem> getAllMenuItems(int restaurantId) {
         return menuInfoDao.getAllMenuItem(restaurantId);
     }
 
@@ -34,6 +34,6 @@ public class MenuInfoService {
      * @return a menuItem
      */
     public MenuItem getMenuItem(int menuItemId) {
-        return menuInfoDao.getMenuItem(menuItemId);
+        return menuInfoDao.getMenuItems(menuItemId);
     }
 }

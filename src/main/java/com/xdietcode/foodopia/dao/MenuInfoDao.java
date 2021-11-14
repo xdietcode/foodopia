@@ -57,7 +57,7 @@ public class MenuInfoDao {
      * @param menuItemId
      * @return return a MenuItem
      */
-    public MenuItem getMenuItem(int menuItemId) {
+    public MenuItem getMenuItems(int menuItemId) {
         Session session = null;
         try {
             session = sessionFactory.openSession();
