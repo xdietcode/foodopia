@@ -20,11 +20,11 @@ public class MenuInfoDao {
     /**
      * @return list of restaurants
      */
-    public List<Restaurant> getRestaurant() {
+    public List<Restaurant> getRestaurants() {
 
         Session session = sessionFactory.openSession();
         try {
-            session.createCriteria(Restaurant.class)
+            return session.createCriteria(Restaurant.class)
                     .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY) // remove duplicates
                     .list();
         } catch (Exception e) {

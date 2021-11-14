@@ -18,7 +18,7 @@ public class MenuInfoService {
      * @return list of restaurants
      */
     public List<Restaurant> getRestaurants() {
-        return menuInfoDao.getRestaurant();
+        return menuInfoDao.getRestaurants();
     }
 
     /**

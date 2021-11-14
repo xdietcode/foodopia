@@ -23,7 +23,7 @@ public class MenuInfoController {
         return menuInfoService.getAllMenuItems(restaurantId);
     }
 
-    @RequestMapping(value = "/restaurant", method = RequestMethod.GET)
+    @RequestMapping(value = "/restaurants", method = RequestMethod.GET)
     @ResponseBody
     public List<Restaurant> getRestaurants() {
         return menuInfoService.getRestaurants();
