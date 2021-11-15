@@ -1,5 +1,6 @@
 package com.xdietcode.foodopia.service;
 
+import com.xdietcode.foodopia.dao.CartDao;
 import com.xdietcode.foodopia.entity.Cart;
 import com.xdietcode.foodopia.entity.Customer;
 import com.xdietcode.foodopia.entity.OrderItem;
@@ -13,6 +14,9 @@ public class CartService {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private CartDao cartDao;
 
     public Cart getCart() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -30,6 +34,13 @@ public class CartService {
             return cart;
         }
         return new Cart();
+    }
+
+    public void cleanCart() {
+        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+        String username = loggedInUser.getName();
+        Customer customer = customerService.getCustomer(username);
+        cartDao.removeAll(customer.getCart());
     }
 
 }
